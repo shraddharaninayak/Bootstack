@@ -11,7 +11,14 @@ export default function FeaturedWork() {
       <div className={`container-inner ${visible ? "reveal-visible" : "reveal"}`} ref={ref}>
         <div className="text-center max-w-2xl mx-auto">
           <span className="eyebrow">Featured Work</span>
-          <h2 className="section-heading">Selected Work</h2>
+          <h2 className="section-heading mt-2 leading-tight">
+  <span className="text-brand-blue">
+    Selected
+  </span>{" "}
+  <span className="text-brand-blue">
+    Work.
+  </span>
+</h2>
           <p className="section-subheading mx-auto">
             Bootstack is just getting started. Every project here will be a real, measurable growth story.
           </p>

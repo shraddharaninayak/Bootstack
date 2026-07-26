@@ -42,9 +42,17 @@ export default function Process() {
   
         {/* Heading */}
         <div className="text-center max-w-2xl mx-auto">
-          <span className="eyebrow">Our Process</span>
-          <h2 className="section-heading">How We Work</h2>
-        </div>
+  <span className="eyebrow">OUR PROCESS</span>
+
+  <h2 className="section-heading leading-tight mt-2">
+    <span className="text-brand-cyan">
+      How We
+    </span>{" "}
+    <span className="text-brand-blue">
+      Work.
+    </span>
+  </h2>
+</div>
 
         {/* Timeline Box */}
         <div className="mt-20 relative">

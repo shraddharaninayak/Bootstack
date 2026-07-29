@@ -95,16 +95,18 @@ export default function Services() {
         {service.description}
       </p>
 
-      <div className="mt-10 flex items-center text-brand-blue font-semibold">
+      <div className="mt-10 inline-flex items-center gap-2 font-semibold text-brand-blue transition-all duration-300 group-hover:text-brand-yellow">
 
-        Explore
+  <span className="border-b border-transparent transition-all duration-300 group-hover:border-brand-yellow">
+    Explore
+  </span>
 
-        <ArrowRight
-          size={18}
-          className="ml-2 transition-transform duration-300 group-hover:translate-x-2"
-        />
+  <ArrowRight
+    size={18}
+    className="transition-all duration-300 group-hover:translate-x-2"
+  />
 
-      </div>
+</div>
 
     </a>
 

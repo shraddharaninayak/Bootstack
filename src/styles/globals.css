@@ -61,12 +61,27 @@
   }
 
   .btn-primary {
-    @apply btn bg-brand-blue text-white shadow-card hover:bg-brand-blue-dark hover:shadow-card-hover hover:-translate-y-0.5;
-  }
+  @apply btn bg-brand-blue text-white transition-all duration-300;
+}
+
+.btn-primary:hover {
+  background-color: #F7AA00;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(247, 170, 0, 0.35);
+}
 
   .btn-secondary {
-    @apply btn bg-white text-brand-blue border border-line hover:border-brand-blue/30 hover:-translate-y-0.5;
-  }
+  @apply btn bg-white text-brand-blue border border-line transition-all duration-300;
+}
+
+.btn-secondary:hover {
+  background-color: #F7AA00;
+  color: #ffffff;
+  border-color: #F7AA00;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(247, 170, 0, 0.35);
+}
 
   .btn-accent {
     @apply btn bg-brand-yellow text-brand-blue-dark hover:brightness-95 hover:-translate-y-0.5;

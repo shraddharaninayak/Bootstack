@@ -1,5 +1,6 @@
 import { Check } from "lucide-react";
 import useReveal from "../hooks/useReveal";
+import heroReference from "../assets/hero-device.png";
 
 const TRUST_POINTS = ["Strategy First", "Technology Driven", "Growth Focused"];
 
@@ -105,8 +106,8 @@ export default function Hero() {
         {/* Copy column */}
        <div>
 
- <div className="inline-flex items-center gap-3 rounded-full border border-[#235784]/15 bg-white/80 backdrop-blur-md px-6 py-3 shadow-md">
-  <span className="h-2.5 w-2.5 rounded-full bg-[#F7AA00]"></span>
+<div className="inline-flex items-center gap-3 rounded-full border border-[#235784]/15 bg-white/80 backdrop-blur-md px-6 py-3 shadow-md mb-6"> 
+<span className="h-2.5 w-2.5 rounded-full bg-[#F7AA00]"></span>
 
   <span className="text-[12px] md:text-[13px] font-semibold uppercase tracking-[0.25em] text-[#235784]">
     MARKETING + TECHNOLOGY GROWTH PARTNER
@@ -132,22 +133,33 @@ export default function Hero() {
             </a>
           </div>
 
-          <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-3">
-            {TRUST_POINTS.map((point) => (
-              <li key={point} className="flex items-center gap-2 text-sm font-medium text-ink-900">
-                <span className="w-5 h-5 rounded-full bg-brand-blue/10 text-brand-blue flex items-center justify-center">
-                  <Check size={13} strokeWidth={3} />
-                </span>
-                {point}
-              </li>
-            ))}
-          </ul>
+          <ul className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
+  {TRUST_POINTS.map((point) => (
+    <li
+      key={point}
+      className="flex items-center gap-3 text-sm font-semibold text-[#235784]"
+    >
+      <span className="w-2.5 h-2.5 rounded-full bg-[#F7AA00]"></span>
+      {point}
+    </li>
+  ))}
+</ul>
         </div>
 
-        {/* Illustration column */}
-        {/* <div className="relative">
-          <DashboardIllustration />
-        </div> */}
+        {/* Right Side */}
+<div className="relative hidden lg:flex justify-center items-center">
+
+  {/* Glow */}
+  <div className="absolute w-[500px] h-[500px] bg-cyan-300/20 blur-[120px] rounded-full"></div>
+
+  {/* Image */}
+  <img
+    src={heroReference}
+    alt="Bootstack Hero"
+    className="relative z-10 w-full max-w-[700px] object-contain"
+  />
+
+</div>
       </div>
     </section>
   );

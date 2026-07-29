@@ -1,4 +1,5 @@
-import { Linkedin, Instagram, Facebook, Youtube, Mail, Phone } from "lucide-react";
+import { Linkedin, Instagram, Mail, Phone } from "lucide-react";
+import logo from "../assets/Footer-img.png";
 
 const QUICK_LINKS = [
   { label: "Home", href: "#home" },
@@ -9,39 +10,54 @@ const QUICK_LINKS = [
 ];
 
 const SERVICES = [
-  "Social Media Management",
   "Performance Marketing",
-  "Website Development",
-  "Branding & Strategy",
-  "SEO Optimization",
-  "Marketing Automation",
+  "Social Media Marketing",
+  "UI/UX Design",
+  "Brand Consultation",
+  "Web Development",
   "Software Development",
+  "App Development",
+  "Marketing Automation",
+  "AI & Automation",
 ];
 
 const RESOURCES = [
-  { label: "Blog", href: "#" },
-  { label: "Case Studies", href: "#work" },
-  { label: "FAQs", href: "#" },
+  { label: "Career Blog", href: "#" },
+  { label: "Success Stories", href: "#reviews" },
+  { label: "FAQs", href: "#faq" },
   { label: "Privacy Policy", href: "#" },
   { label: "Terms & Conditions", href: "#" },
 ];
 
 const SOCIALS = [
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Facebook, href: "#", label: "Facebook" },
-  { icon: Instagram, href: "#", label: "Instagram" },
-  { icon: Youtube, href: "#", label: "YouTube" },
+  {
+    icon: Instagram,
+    href: "https://www.instagram.com/bootstack.io/",
+    label: "Instagram",
+  },
+  {
+    icon: Linkedin,
+    href: "https://www.linkedin.com/company/bootstack-io/posts/?feedView=all", // Replace with your official LinkedIn page URL
+    label: "LinkedIn",
+  },
 ];
 
 export default function Footer() {
   return (
     <footer className="bg-brand-blue-dark text-white/70">
-      <div className="container-inner px-6 py-16 grid sm:grid-cols-2 lg:grid-cols-5 gap-10">
-        <div className="lg:col-span-1 sm:col-span-2">
-          <span className="font-display font-extrabold text-xl text-white">Bootstack</span>
-          <p className="mt-3 text-sm leading-relaxed max-w-xs">
-            Marketing + technology agency helping businesses build, grow and scale with smart systems.
-          </p>
+<div className="container-inner px-6 py-16 grid sm:grid-cols-2 lg:grid-cols-5 gap-10 items-start">   
+  <div className="lg:col-span-1 sm:col-span-2 max-w-xs">
+<div className="h-10 flex items-center mb-4">
+  <img
+    src={logo}
+    alt="Bootstack"
+    className="h-25 w-auto object-contain"
+  />
+</div>   
+    <p className="text-sm leading-relaxed">
+  Marketing + technology agency helping businesses build,
+  grow and scale with smart systems.
+</p>
           <div className="mt-5 flex gap-3">
             {SOCIALS.map(({ icon: Icon, href, label }) => (
               <a
@@ -100,14 +116,14 @@ export default function Footer() {
           <ul className="space-y-3 text-sm">
             <li className="flex items-center gap-2">
               <Mail size={15} />
-              <a href="mailto:hello@bootstack.io" className="hover:text-white transition-colors">
-                hello@bootstack.io
+              <a href="mailto:aayush@thebootstack.io" className="hover:text-white transition-colors">
+                aayush@thebootstack.io
               </a>
             </li>
             <li className="flex items-center gap-2">
               <Phone size={15} />
-              <a href="tel:+911234567890" className="hover:text-white transition-colors">
-                +91 12345 67890
+              <a href="tel:+91 9975499956" className="hover:text-white transition-colors">
+                +91 9975499956
               </a>
             </li>
             <li>

@@ -154,10 +154,9 @@ export default function Hero() {
 
   {/* Image */}
   <img
-    src={heroReference}
-    alt="Bootstack Hero"
-    className="relative z-10 w-full max-w-[700px] object-contain"
-  />
+  src={heroReference}
+  alt="Bootstack Hero"
+className="relative z-10 w-full max-w-[780px] object-contain scale-110"/>
 
 </div>
       </div>

@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { Check } from "lucide-react";
 import useReveal from "../hooks/useReveal";
 import heroReference from "../assets/hero-device.png";
+import ConsultationModal from "./ConsultationModal";
 
-const TRUST_POINTS = ["Strategy First", "Technology Driven", "Growth Focused"];
+const TRUST_POINTS = ["Innovation First", "Results Focused", "Buisness Growth"];
 
 function DashboardIllustration() {
   return (
@@ -94,40 +96,40 @@ function DashboardIllustration() {
 
 export default function Hero() {
   const [ref, visible] = useReveal();
+  const [open, setOpen] = useState(false);
 
   return (
     <section id="home" className="relative pt-36 pb-20 md:pt-44 md:pb-28 px-6 overflow-hidden bg-brand-bg">
       <div
-        ref={ref}
-        className={`container-inner grid md:grid-cols-2 gap-14 md:gap-10 items-center ${
-          visible ? "reveal-visible" : "reveal"
-        }`}
-      >
+  ref={ref}
+  className={`container-inner grid lg:grid-cols-[1.15fr_0.85fr] gap-14 items-center ${
+    visible ? "reveal-visible" : "reveal"
+  }`}
+>
         {/* Copy column */}
        <div>
 
-<div className="inline-flex items-center gap-3 rounded-full border border-[#235784]/15 bg-white/80 backdrop-blur-md px-6 py-3 shadow-md mb-6"> 
-<span className="h-2.5 w-2.5 rounded-full bg-[#F7AA00]"></span>
-
-  <span className="text-[12px] md:text-[13px] font-semibold uppercase tracking-[0.25em] text-[#235784]">
-    MARKETING + TECHNOLOGY GROWTH PARTNER
+<h1 className="text-4xl md:text-6xl font-display font-semibold tracking-[-0.05em] leading-[0.95]">
+  <span className="block text-[#235784]">
+    Technology That Build
   </span>
-</div>
-          <h1 className="text-4xl md:text-6xl font-display font-extrabold tracking-tight leading-[1.08]">
-  <span className="text-[#235784]">Build.</span>{" "}
-  <span className="text-[#235784]">Scale.</span>
-  <br />
-  <span className="text-[#40A8C4]">Automate.</span>
+
+  <span className="block text-[#40A8C4]">
+    Tomorrow's Brands.
+  </span>
 </h1>
           <p className="mt-6 text-base md:text-lg text-ink-500 max-w-lg leading-relaxed">
-            We help ambitious businesses grow through branding, websites, software, marketing and automation,
-            all working together as one growth system.
+           We build brands, websites, software, AI automation, and marketing systems that help ambitious
+           businesses grow, scale, and lead with confidence.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
-            <a href="#contact" className="btn-primary">
-              Book Strategy Call
-            </a>
+            <button
+  onClick={() => setOpen(true)}
+  className="btn-primary"
+>
+  Book Consultation Call
+</button>
             <a href="#services" className="btn-secondary">
               Explore Services
             </a>
@@ -160,6 +162,10 @@ className="relative z-10 w-full max-w-[780px] object-contain scale-110"/>
 
 </div>
       </div>
+      <ConsultationModal
+  open={open}
+  onClose={() => setOpen(false)}
+/>
     </section>
   );
 }

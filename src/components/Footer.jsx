@@ -1,4 +1,11 @@
-import { Linkedin, Instagram, Mail, Phone } from "lucide-react";
+import {
+  Linkedin,
+  Instagram,
+  Facebook,
+  Twitter,
+  Mail,
+  Phone,
+} from "lucide-react";
 import logo from "../assets/Footer-img.png";
 
 const QUICK_LINKS = [
@@ -36,8 +43,18 @@ const SOCIALS = [
     label: "Instagram",
   },
   {
+    icon: Facebook,
+    href: "https://www.facebook.com/", // Replace with Bootstack Facebook URL
+    label: "Facebook",
+  },
+  {
+    icon: Twitter,
+    href: "https://x.com/", // Replace with Bootstack X/Twitter URL
+    label: "X",
+  },
+  {
     icon: Linkedin,
-    href: "https://www.linkedin.com/company/bootstack-io/posts/?feedView=all", // Replace with your official LinkedIn page URL
+    href: "https://www.linkedin.com/company/bootstack-io/posts/",
     label: "LinkedIn",
   },
 ];
@@ -45,19 +62,19 @@ const SOCIALS = [
 export default function Footer() {
   return (
     <footer className="bg-brand-blue-dark text-white/70">
-<div className="container-inner px-6 py-16 grid sm:grid-cols-2 lg:grid-cols-5 gap-10 items-start">   
-  <div className="lg:col-span-1 sm:col-span-2 max-w-xs">
-<div className="h-10 flex items-center mb-4">
-  <img
-    src={logo}
-    alt="Bootstack"
-    className="h-25 w-auto object-contain"
-  />
-</div>   
-    <p className="text-sm leading-relaxed">
-  Marketing + technology agency helping businesses build,
-  grow and scale with smart systems.
-</p>
+      <div className="container-inner px-6 py-16 grid sm:grid-cols-2 lg:grid-cols-5 gap-10 items-start">
+        <div className="lg:col-span-1 sm:col-span-2 max-w-xs">
+          <div className="h-10 flex items-center mb-4">
+            <img
+              src={logo}
+              alt="Bootstack"
+              className="h-25 w-auto object-contain"
+            />
+          </div>
+          <p className="text-sm leading-relaxed">
+            Marketing + technology agency helping businesses build, grow and
+            scale with smart systems.
+          </p>
           <div className="mt-5 flex gap-3">
             {SOCIALS.map(({ icon: Icon, href, label }) => (
               <a
@@ -73,11 +90,16 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4 className="text-white font-display font-semibold text-sm mb-4">Quick Links</h4>
+          <h4 className="text-white font-display font-semibold text-sm mb-4">
+            Quick Links
+          </h4>
           <ul className="space-y-2.5 text-sm">
             {QUICK_LINKS.map((link) => (
               <li key={link.label}>
-                <a href={link.href} className="hover:text-white transition-colors">
+                <a
+                  href={link.href}
+                  className="hover:text-white transition-colors"
+                >
                   {link.label}
                 </a>
               </li>
@@ -86,11 +108,16 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4 className="text-white font-display font-semibold text-sm mb-4">Services</h4>
+          <h4 className="text-white font-display font-semibold text-sm mb-4">
+            Services
+          </h4>
           <ul className="space-y-2.5 text-sm">
             {SERVICES.map((service) => (
               <li key={service}>
-                <a href="#services" className="hover:text-white transition-colors">
+                <a
+                  href="#services"
+                  className="hover:text-white transition-colors"
+                >
                   {service}
                 </a>
               </li>
@@ -99,11 +126,16 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4 className="text-white font-display font-semibold text-sm mb-4">Resources</h4>
+          <h4 className="text-white font-display font-semibold text-sm mb-4">
+            Resources
+          </h4>
           <ul className="space-y-2.5 text-sm">
             {RESOURCES.map((link) => (
               <li key={link.label}>
-                <a href={link.href} className="hover:text-white transition-colors">
+                <a
+                  href={link.href}
+                  className="hover:text-white transition-colors"
+                >
                   {link.label}
                 </a>
               </li>
@@ -112,22 +144,33 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4 className="text-white font-display font-semibold text-sm mb-4">Contact Us</h4>
+          <h4 className="text-white font-display font-semibold text-sm mb-4">
+            Contact Us
+          </h4>
           <ul className="space-y-3 text-sm">
             <li className="flex items-center gap-2">
               <Mail size={15} />
-              <a href="mailto:aayush@thebootstack.io" className="hover:text-white transition-colors">
+              <a
+                href="mailto:aayush@thebootstack.io"
+                className="hover:text-white transition-colors"
+              >
                 aayush@thebootstack.io
               </a>
             </li>
             <li className="flex items-center gap-2">
               <Phone size={15} />
-              <a href="tel:+91 9975499956" className="hover:text-white transition-colors">
+              <a
+                href="tel:+91 9975499956"
+                className="hover:text-white transition-colors"
+              >
                 +91 9975499956
               </a>
             </li>
             <li>
-              <a href="#contact" className="inline-block mt-1 text-brand-yellow font-semibold hover:brightness-90">
+              <a
+                href="#contact"
+                className="inline-block mt-1 text-brand-yellow font-semibold hover:brightness-90"
+              >
                 Book a Call →
               </a>
             </li>

@@ -1,9 +1,17 @@
-import { Image, Rocket, Settings2, Target, TrendingUp } from "lucide-react";
+import {
+  Image,
+  Lightbulb,
+  LightbulbIcon,
+  Rocket,
+  Settings2,
+  Target,
+  TrendingUp,
+} from "lucide-react";
 import useReveal from "../hooks/useReveal";
 
 const CHIPS = [
-  { label: "Strategy", icon: Target },
-  { label: "Technology", icon: Settings2 },
+  { label: "Consult", icon: Target },
+  { label: "Solution", icon: LightbulbIcon },
   { label: "Execution", icon: Rocket },
   { label: "Growth", icon: TrendingUp },
 ];
@@ -31,16 +39,39 @@ export default function About() {
         <div className="order-1 md:order-2">
           <span className="eyebrow">About Bootstack</span>
           <h2 className="text-3xl md:text-4xl font-display font-bold tracking-tight leading-tight">
-            We don&apos;t just build brands. We build business growth systems.
+            I Didn't Start Bootstack to Build Projects. I Started It to Build
+            Businesses.
           </h2>
           <p className="mt-5 text-ink-500 leading-relaxed">
-            Most businesses fail to grow because of scattered services and disconnected tools — a brand
-            here, a website there, ads managed by someone else entirely.
+            Too many companies invest in websites, marketing and software
+            separately without a clear strategy.
           </p>
           <p className="mt-4 text-ink-500 leading-relaxed">
-            Bootstack brings strategy, technology, execution and growth together as one connected system,
-            so every part of your business works toward the same outcome.
+            Bootstack was created to bring everything together from branding and
+            technology to automation and growth so every solution works toward
+            one goal: helping businesses scale.
           </p>
+
+          <div className="mt-7">
+            <p className="text-lg italic text-ink-700 leading-relaxed">
+              Thank you for trusting Bootstack. We're excited to be part of your
+              growth journey.
+            </p>
+
+            <div className="mt-4 flex items-center gap-3">
+              <div className="w-10 h-px bg-brand-cyan"></div>
+
+              <div>
+                <p className="font-display font-semibold text-brand-blue">
+                  Aayush Vora
+                </p>
+
+                <p className="text-xs uppercase tracking-widest text-ink-500">
+                  Founder • Bootstack , Nashik
+                </p>
+              </div>
+            </div>
+          </div>
 
           <div className="mt-7 flex flex-wrap gap-3">
             {CHIPS.map(({ label, icon: Icon }) => (

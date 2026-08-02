@@ -1,26 +1,26 @@
-import { Compass, Users2, BarChart3, LifeBuoy } from "lucide-react";
+import {  BarChart3, SearchCheck, WorkflowIcon, Rocket, RocketIcon, BarChart3Icon, GitBranch, GitBranchIcon } from "lucide-react";
 import useReveal from "../hooks/useReveal";
 
 const REASONS = [
   {
-    icon: Compass,
-    title: "One Strategy",
-    description: "A single strategy that aligns marketing, technology and business goals.",
+    icon: SearchCheck,
+    title: "Deep Dive & Diagnosis",
+    description: "We audit your brand, funnels, and current performance to identify gaps, leaks and growth opportunities.",
   },
   {
-    icon: Users2,
-    title: "One Team",
-    description: "A dedicated team working as an extension of your business.",
+    icon: WorkflowIcon,
+    title: "Strategy Architecture",
+    description: "We design a custom growth blueprint covering positioning, content, paid ads and systems aligned with your business goals.",
   },
   {
-    icon: BarChart3,
-    title: "Measurable Results",
-    description: "A data-driven approach that delivers measurable growth.",
+    icon: RocketIcon,
+    title: "Build & Execute",
+    description: "From content creation to funnel setup, CRM and campaigns, we implement everything with precision and speed.",
   },
   {
-    icon: LifeBuoy,
-    title: "End-to-End Support",
-    description: "From strategy to execution, we're with you at every step.",
+    icon: BarChart3Icon,
+    title: "Optimise & Scale",
+    description: "Continuous tracking, testing and optimisation to improve ROI and scale what works consistently.",
   },
 ];
 

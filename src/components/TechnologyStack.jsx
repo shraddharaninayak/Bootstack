@@ -2,32 +2,33 @@ const row1 = [
   "React",
   "Next.js",
   "TypeScript",
-  "Node.js",
-  "MongoDB",
-  "openAI",
   "Tailwind CSS",
+  "Node.js",
+  "Express.js",
+  "MongoDB",
+  "PostgreSQL",
 ];
 
 const row2 = [
-  "Python",
-  "OpenAI",
-  "Meta Ads",
-  "Google Ads",
-  "HubSpot",
-  "WhatsApp API",
+  "Firebase",
+  "Supabase",
+  "REST APIs",
+  "GraphQL",
+  "AWS",
   "Cloudflare",
-  "Vercel",
+  "Docker",
+  "GitHub",
 ];
 
 const row3 = [
-  "Laravel",
-  "Express",
-  "PostgreSQL",
-  "Firebase",
-  "Supabase",
-  "GSAP",
+  "React Native",
+  "Flutter",
   "Framer Motion",
-  "GitHub",
+  "Figma",
+  "Vercel",
+  "Netlify",
+  "OpenAI",
+  "Stripe",
 ];
 
 export default function TechnologyStack() {
@@ -54,7 +55,7 @@ export default function TechnologyStack() {
 
 <p className="mt-10 max-w-3xl text-[22px] leading-[1.7] text-[#235784]/70">
   We code using languages designed for absolute security,
-  rapid speed, and dynamic animations. No visual website
+  rapid speed and dynamic animations. No visual website
   builder constraints.
 </p>
 

@@ -1,43 +1,42 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 export default function WhyBootstackSection({ service }) {
+  const [activeIndex, setActiveIndex] = useState(null);
   return (
     <section className="py-24">
       <div className="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-2">
-
         {/* Left */}
 
         <motion.div
-  initial={{ opacity: 0, y: 30 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true }}
-  transition={{ duration: 0.6 }}
-   className="max-w-4xl"
->
-  {/* Eyebrow */}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-4xl"
+        >
+          {/* Eyebrow */}
 
-<div className="flex items-center gap-3">
+          <div className="flex items-center gap-3">
+            <div className="h-px w-10 bg-[#40A8C4]" />
 
-  <div className="h-px w-10 bg-[#40A8C4]" />
+            <span className="text-sm font-semibold uppercase tracking-[0.25em] text-[#40A8C4]">
+              {service.whyBootstack.heading}
+            </span>
+          </div>
 
-  <span className="text-sm font-semibold uppercase tracking-[0.25em] text-[#40A8C4]">
-    {service.whyBootstack.heading}
-  </span>
+          {/* Heading */}
 
-</div>
+          <h2 className="mt-5 text-5xl font-bold text-[#0F2743]">
+            Why Bootstack
+          </h2>
 
-  {/* Heading */}
+          {/* Description */}
 
-  <h2 className="mt-5 text-5xl font-bold text-[#0F2743]">
-  Why Bootstack
-</h2>
-
-  {/* Description */}
-
-  <p className="mx-auto mt-8 max-w-3xl text-xl leading-9 text-slate-600">
-    {service.whyBootstack.description}
-  </p>
-</motion.div>
+          <p className="mx-auto mt-8 max-w-3xl text-xl leading-9 text-slate-600">
+            {service.whyBootstack.description}
+          </p>
+        </motion.div>
 
         {/* Right */}
 
@@ -49,10 +48,19 @@ export default function WhyBootstackSection({ service }) {
         >
           {service.whyBootstackPoints.map((title, index) => (
             <div
-              key={index}
-              className="group cursor-pointer"
-            >
-              <h3 className="text-5xl font-black text-[#235784]/20 transition duration-300 group-hover:text-[#F7AA00]">
+  key={index}
+  className="group cursor-pointer"
+  onClick={() =>
+    setActiveIndex(activeIndex === index ? null : index)
+  }
+>
+              <h3
+  className={`text-5xl font-black transition-all duration-300 ${
+    activeIndex === index
+      ? "text-[#F7AA00] scale-110"
+      : "text-[#235784]/20 group-hover:text-[#F7AA00]"
+  }`}
+>
                 {String(index + 1).padStart(2, "0")}
               </h3>
 
@@ -60,11 +68,16 @@ export default function WhyBootstackSection({ service }) {
                 {title}
               </h4>
 
-              <div className="mt-6 h-[2px] w-20 bg-[#40A8C4] transition-all duration-300 group-hover:w-32"></div>
+              <div
+  className={`mt-6 h-[2px] bg-[#40A8C4] transition-all duration-300 ${
+    activeIndex === index
+      ? "w-32"
+      : "w-20 group-hover:w-32"
+  }`}
+/>
             </div>
           ))}
         </motion.div>
-
       </div>
     </section>
   );

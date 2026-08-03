@@ -140,12 +140,18 @@ export default function Header() {
 
             <button
               onClick={() => {
-                setOpen(true);
+                const phone = "919975499956";
+
+                const message = encodeURIComponent(
+                  "Hi Bootstack Team,\n\nI visited your website and would like to discuss my project. Please get in touch with me.",
+                );
+
+                window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
                 setMobileOpen(false);
               }}
-              className="rounded-full bg-[#235784] py-4 text-center font-semibold text-white"
+              className="rounded-full bg-[#235784] py-4 text-center font-semibold text-white hover:bg-[#1b4568] transition-all duration-300"
             >
-              Book a Strategy Call
+              Contact Us
             </button>
           </div>
         </div>

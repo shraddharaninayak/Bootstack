@@ -28,7 +28,7 @@ export default function About() {
         }`}
       >
         {/* Placeholder image */}
-        <div className="aspect-[4/3] rounded-card bg-white border border-line flex items-center justify-center order-2 md:order-1">
+        <div className="aspect-[4/3] rounded-card bg-white border border-line flex items-center justify-center order-1 md:order-1">
           <div className="flex flex-col items-center gap-2 text-ink-500">
             <Image size={36} strokeWidth={1.5} />
             <span className="text-xs">Team / studio photo placeholder</span>
@@ -36,7 +36,7 @@ export default function About() {
         </div>
 
         {/* Content */}
-        <div className="order-1 md:order-2">
+        <div className="order-2 md:order-2">
           <span className="eyebrow">About Bootstack</span>
           <h2 className="text-3xl md:text-4xl font-display font-bold tracking-tight leading-tight">
             I Didn't Start Bootstack to Build Projects. I Started It to Build

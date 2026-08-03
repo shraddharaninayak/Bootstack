@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Building2Icon, Smartphone, MonitorCheckIcon, TrendingUpIcon, PaletteIcon } from "lucide-react";
 import useReveal from "../hooks/useReveal";
@@ -70,6 +70,19 @@ export default function WhatWeBuild() {
   const [ref, visible] = useReveal();
   const [active, setActive] = useState(0);
 
+  const [isMobile, setIsMobile] = useState(false);
+
+useEffect(() => {
+  const checkMobile = () => {
+    setIsMobile(window.innerWidth < 1024); // Tailwind lg breakpoint
+  };
+
+  checkMobile();
+  window.addEventListener("resize", checkMobile);
+
+  return () => window.removeEventListener("resize", checkMobile);
+}, []);
+
   return (
     <section className="section bg-white">
       <div className={`container-inner ${visible ? "reveal-visible" : "reveal"}`} ref={ref}>
@@ -90,8 +103,13 @@ export default function WhatWeBuild() {
       return (
         <button
           key={item.title}
-          onMouseEnter={() => setActive(index)}
-          onClick={() => setActive(index)}
+         onMouseEnter={() => {
+  if (!isMobile) setActive(index);
+}}
+
+onClick={() => {
+  if (isMobile) setActive(index);
+}}
 
 //           className={`w-full rounded-xl border p-5 text-left transition-all duration-300 ${
 //   active === index

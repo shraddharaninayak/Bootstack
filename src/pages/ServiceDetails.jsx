@@ -7,6 +7,7 @@ import WhyBootstackSection from "../components/Sections/WhyBootstackSection";
 import WhatWeDoBestSection from "../components/Sections/WhatWeDoBestSection";
 import ProcessSection from "../components/Sections/ProcessSection";
 
+
 export default function ServiceDetails() {
   const { slug } = useParams();
 

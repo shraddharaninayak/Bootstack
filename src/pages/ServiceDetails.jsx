@@ -7,11 +7,10 @@ import WhyBootstackSection from "../components/Sections/WhyBootstackSection";
 import WhatWeDoBestSection from "../components/Sections/WhatWeDoBestSection";
 import ProcessSection from "../components/Sections/ProcessSection";
 
-
 export default function ServiceDetails() {
   const { slug } = useParams();
 
-const service = servicesData.find((item) => item.slug === slug);
+  const service = servicesData.find((item) => item.slug === slug);
   if (!service) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -19,27 +18,25 @@ const service = servicesData.find((item) => item.slug === slug);
       </div>
     );
   }
-return (
-  <div className="min-h-screen bg-white">
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Hero */}
+      <HeroSection service={service} />
 
-    {/* Hero */}
-    <HeroSection service={service} />
+      {/* About */}
+      <AboutSection service={service} />
 
-    {/* About */}
-    <AboutSection service={service} />
+      {/* Why It Matters */}
+      <WhyItMattersSection service={service} />
 
-    {/* Why It Matters */}
-    <WhyItMattersSection service={service} />
+      {/* Why Bootstack */}
+      <WhyBootstackSection service={service} />
 
-    {/* Why Bootstack */}
-    <WhyBootstackSection service={service} />
+      {/* What We Do Best */}
+      <WhatWeDoBestSection service={service} />
 
-    {/* What We Do Best */}
-    <WhatWeDoBestSection service={service} />
-
-    {/* Our Process */}
-    <ProcessSection service={service} />
-
-  </div>
-);
+      {/* Our Process */}
+      <ProcessSection service={service} />
+    </div>
+  );
 }

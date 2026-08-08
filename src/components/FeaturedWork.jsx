@@ -11,7 +11,7 @@ export default function FeaturedWork() {
       <div className={`container-inner ${visible ? "reveal-visible" : "reveal"}`} ref={ref}>
         <div className="text-center max-w-2xl mx-auto">
           <span className="eyebrow">Featured Work</span>
-          <h2 className="section-heading mt-2 leading-tight">
+<h2 className="text-4xl md:text-5xl font-bold">
   <span className="text-brand-blue">
     Selected
   </span>{" "}

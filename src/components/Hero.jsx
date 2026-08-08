@@ -1,7 +1,7 @@
+import heroVideo from "../assets/hero-background.mp4";
 import { useState } from "react";
 import { Check } from "lucide-react";
 import useReveal from "../hooks/useReveal";
-import heroReference from "../assets/hero-device.png";
 import ConsultationModal from "./ConsultationModal";
 
 const TRUST_POINTS = ["Innovation First", "Results Focused", "Buisness Growth"];
@@ -99,29 +99,45 @@ export default function Hero() {
   const [open, setOpen] = useState(false);
 
   return (
-    <section id="home" className="relative pt-36 pb-20 md:pt-44 md:pb-28 px-6 overflow-hidden bg-brand-bg">
-      <div
+  <section
+  id="home"
+  className="relative min-h-screen flex items-center overflow-hidden px-6 pt-32 pb-16"
+>
+
+  {/* Background Video */}
+<video
+  autoPlay
+  muted
+  loop
+  playsInline
+  className="absolute inset-0 w-full h-full object-cover brightness-[0.85]"
+>
+  <source src={heroVideo} type="video/mp4" />
+</video>
+
+<div className="absolute inset-0 bg-gradient-to-r from-[#071A2B]/80 via-[#071A2B]/50 to-[#071A2B]/35" />
+
+
+ {/* Hero Content */}
+<div
   ref={ref}
-  className={`container-inner grid lg:grid-cols-[1.15fr_0.85fr] gap-14 items-center ${
+  className={`container-inner relative z-10 ${
     visible ? "reveal-visible" : "reveal"
   }`}
 >
         {/* Copy column */}
-       <div>
+            <div className="max-w-4xl">
 
-<h1 className="text-4xl md:text-6xl font-display font-semibold tracking-[-0.05em] leading-[0.95]">
-  <span className="block text-[#235784]">
-    Technology That Build
-  </span>
-
-  <span className="block text-[#40A8C4]">
+<h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[0.95] text-white">
+  Technology That Builds{" "}
+  <span className="text-[#40A8C4]">
     Tomorrow's Brands.
   </span>
 </h1>
-          <p className="mt-6 text-base md:text-lg text-ink-500 max-w-lg leading-relaxed">
-           We build brands, websites, software, AI automation, and marketing systems that help ambitious
-           businesses grow, scale, and lead with confidence.
-          </p>
+          <p className="mt-6 text-base md:text-lg text-white/90 max-w-xl leading-relaxed">
+  We build brands, websites, software, AI automation and marketing systems
+  that help ambitious businesses grow, scale and lead with confidence.
+</p>
 
           <div className="mt-8 flex flex-wrap gap-4">
             <button
@@ -135,32 +151,16 @@ export default function Hero() {
             </a>
           </div>
 
-          <ul className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
-  {TRUST_POINTS.map((point) => (
-    <li
-      key={point}
-      className="flex items-center gap-3 text-sm font-semibold text-[#235784]"
-    >
-      <span className="w-2.5 h-2.5 rounded-full bg-[#F7AA00]"></span>
-      {point}
-    </li>
-  ))}
+          <ul className="mt-8 flex flex-wrap gap-x-8 gap-y-3 text-sm font-semibold text-white/90">
+ {TRUST_POINTS.map((point) => (
+  <li key={point} className="flex items-center gap-2">
+    <Check className="w-4 h-4 text-[#F7AA00]" strokeWidth={3} />
+    <span>{point}</span>
+  </li>
+))}
 </ul>
         </div>
 
-        {/* Right Side */}
-<div className="relative hidden lg:flex justify-center items-center">
-
-  {/* Glow */}
-  <div className="absolute w-[500px] h-[500px] bg-cyan-300/20 blur-[120px] rounded-full"></div>
-
-  {/* Image */}
-  <img
-  src={heroReference}
-  alt="Bootstack Hero"
-className="relative z-10 w-full max-w-[780px] object-contain scale-110"/>
-
-</div>
       </div>
       <ConsultationModal
   open={open}

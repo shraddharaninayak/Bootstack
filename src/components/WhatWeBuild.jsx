@@ -87,8 +87,8 @@ useEffect(() => {
     <section className="section bg-white">
       <div className={`container-inner ${visible ? "reveal-visible" : "reveal"}`} ref={ref}>
         <div className="text-center max-w-2xl mx-auto">
-          <h2 className="section-heading">
-  <span className="text-[#235784]">What We</span>{" "}
+<h2 className="text-4xl md:text-5xl font-bold">
+    <span className="text-[#235784]">What We</span>{" "}
   <span className="text-[#40A8C4]">Build</span>
 </h2>
         </div>

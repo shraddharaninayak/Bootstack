@@ -32,7 +32,7 @@ export default function WhyChooseUs() {
       <div className={`container-inner ${visible ? "reveal-visible" : "reveal"}`} ref={ref}>
         <div className="text-center max-w-2xl mx-auto">
           <span className="eyebrow">Why Choose Us</span>
-          <h2 className="section-heading mt-2 leading-tight">
+<h2 className="text-4xl md:text-5xl font-bold">
   <span className="text-brand-blue">
     Why Businesses
   </span>{" "}

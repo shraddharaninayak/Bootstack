@@ -63,7 +63,8 @@ export default function Services() {
       <div className={`container-inner ${visible ? "reveal-visible" : "reveal"}`} ref={ref}>
         <div className="text-center max-w-2xl mx-auto">
           <span className="eyebrow">Our Services</span>
-         <h2 className="section-heading">
+     <h2 className="text-4xl md:text-5xl font-bold">
+
   <span className="text-[#2E5F91]">Solutions Built</span>{" "}
   <span className="text-[#56B8D9]">For Growth</span>
 </h2>

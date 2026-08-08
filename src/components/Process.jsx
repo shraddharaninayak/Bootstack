@@ -90,7 +90,7 @@ export default function Process() {
         <div className="text-center max-w-2xl mx-auto">
   <span className="eyebrow">OUR PROCESS</span>
 
-  <h2 className="section-heading leading-tight mt-2">
+<h2 className="text-4xl md:text-5xl font-bold">
     <span className="text-brand-cyan">
       How We
     </span>{" "}

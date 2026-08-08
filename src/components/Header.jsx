@@ -39,20 +39,22 @@ export default function Header() {
     <header className="fixed top-6 left-0 right-0 z-50 px-6">
       <div
         className={`mx-auto max-w-7xl rounded-full transition-all duration-500 ${
-          scrolled
-            ? "bg-white/95 backdrop-blur-xl shadow-2xl border border-white/30"
-            : "bg-white/90 backdrop-blur-xl shadow-xl border border-white/20"
-        }`}
+  scrolled
+    ? "bg-transparent backdrop-blur-xl border border-white/20"
+    : "bg-transparent backdrop-blur-xl border border-white/20"
+}`}
       >
         <div className="flex items-center justify-between px-10 py-5">
           {/* Logo */}
           <a href="#home" className="flex items-center">
-            <img src={logo} alt="Bootstack Logo" className="h-14 w-auto" />
+          <img
+  src={logo}
+  alt="Bootstack"
+className="h-14 w-auto object-contain scale-[3] origin-left translate-y-[6px]"/>
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-10">
-            {NAV_LINKS.map((link) => {
+<nav className="hidden md:flex items-center gap-8 ml-auto mr-12">            {NAV_LINKS.map((link) => {
               if (link.label === "Services") {
                 return (
                   <div
@@ -61,9 +63,9 @@ export default function Header() {
                     onMouseEnter={() => setServicesOpen(true)}
                     onMouseLeave={() => setServicesOpen(false)}
                   >
-                    <button className="text-[15px] font-semibold text-slate-700 hover:text-[#235784] transition-all duration-300">
-                      Services
-                    </button>
+                  <button className="text-[15px] font-semibold text-[#40A8C4] hover:text-[#F7AA00] transition-all duration-300">
+  Services
+</button>
 
                     {servicesOpen && (
                       <div className="absolute top-10 left-0 w-[520px] rounded-2xl bg-white shadow-2xl border border-slate-100 p-6">
@@ -88,7 +90,7 @@ export default function Header() {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="text-[15px] font-semibold text-slate-700 hover:text-[#235784] transition-all duration-300"
+                  className="text-[15px] font-semibold text-[#40A8C4] hover:text-[#F7AA00] transition-all duration-300"
                 >
                   {link.label}
                 </a>

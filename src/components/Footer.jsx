@@ -2,11 +2,22 @@ import {
   Linkedin,
   Instagram,
   Facebook,
-  Twitter,
   Mail,
   Phone,
 } from "lucide-react";
 import logo from "../assets/Footer-img.png";
+
+const XLogo = ({ size = 16 }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817-5.964 6.817H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231L18.244 2.25Zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644Z" />
+  </svg>
+);
 
 const QUICK_LINKS = [
   { label: "Home", href: "#home" },
@@ -44,12 +55,14 @@ const SOCIALS = [
   },
   {
     icon: Facebook,
-    href: "https://www.facebook.com/", // Replace with Bootstack Facebook URL
+    href: "https://www.facebook.com/profile.php?id=61584987734034", // Replace with Bootstack Facebook URL
     label: "Facebook",
   },
+
+  
   {
-    icon: Twitter,
-    href: "https://x.com/", // Replace with Bootstack X/Twitter URL
+    icon: XLogo,
+    href: "https://x.com/TheBootstack", // Replace with Bootstack X/Twitter URL
     label: "X",
   },
   {
@@ -62,7 +75,8 @@ const SOCIALS = [
 export default function Footer() {
   return (
     <footer className="bg-brand-blue-dark text-white/70">
-<div className="container-inner px-6 py-16 grid grid-cols-1 lg:grid-cols-5 gap-10 items-start">        <div className="lg:col-span-1 sm:col-span-2 max-w-xs">
+<div className="container-inner px-6 py-16 grid grid-cols-1 lg:grid-cols-5 gap-10 items-start">      
+    <div className="lg:col-span-1 sm:col-span-2 max-w-xs">
           <div className="h-10 flex items-center mb-4">
             <img
               src={logo}
@@ -70,11 +84,10 @@ export default function Footer() {
               className="h-25 w-auto object-contain"
             />
           </div>
-          <p className="text-sm leading-relaxed">
-            Marketing + technology agency helping businesses build, grow and
-            scale with smart systems.
-          </p>
-          <div className="mt-5 flex gap-3">
+          <p className="mt-4 max-w-sm mx-auto lg:mx-0 text-center lg:text-left text-sm leading-6 text-white/70">
+  Marketing + technology agency helping businesses build, grow and scale with smart systems.
+</p>
+          <div className="mt-4 flex justify-center lg:justify-start gap-4">
             {SOCIALS.map(({ icon: Icon, href, label }) => (
               <a
                 key={label}
@@ -140,8 +153,7 @@ export default function Footer() {
       Resources
     </h4>
 
-    <ul className="space-y-2.5 text-sm">
-      {RESOURCES.map((link) => (
+<ul className="space-y-2.5 text-sm -translate-y-0 lg:translate-y-0">      {RESOURCES.map((link) => (
         <li key={link.label}>
           <a
             href={link.href}
@@ -164,17 +176,17 @@ export default function Footer() {
       <li className="flex items-center gap-2">
         <Mail size={15} />
         <a
-          href="mailto:aayush@thebootstack.io"
+          href="mailto:info@thebootstack.io"
           className="hover:text-white transition-colors"
         >
-          aayush@thebootstack.io
+          info@thebootstack.io
         </a>
       </li>
 
       <li className="flex items-center gap-2">
         <Phone size={15} />
         <a
-          href="tel:+919975499956"
+          href="tel:+91 99754 99956 "
           className="hover:text-white transition-colors"
         >
           +91 9975499956

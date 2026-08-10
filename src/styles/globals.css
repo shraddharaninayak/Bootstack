@@ -306,10 +306,6 @@
 }
 
 /* ============================= */
-/* Hero Heading Highlight */
-/* ============================= */
-
-/* ============================= */
 /* Hero Gradient Heading */
 /* ============================= */
 
@@ -919,29 +915,80 @@
 @media (max-width: 1024px) {
   .process-flow {
     padding: 3rem 1.5rem;
+    overflow-x: auto;
+    overflow-y: hidden;
   }
 
   .process-connector {
-    display: none;
+    display: block;
+    left: 2rem;
+    right: 2rem;
   }
 
   .process-cards {
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 12px;
+    width: max-content;
+    min-width: 100%;
+  }
+
+  .process-card {
+    flex: 0 0 150px;
+    min-height: 115px;
+  }
+
+  .process-particle {
+    display: block;
   }
 }
 
 @media (max-width: 640px) {
   .process-flow {
-    padding: 2rem 1rem;
+    padding: 2.5rem 1rem;
     border-radius: 18px;
+    overflow-x: auto;
+    overflow-y: hidden;
   }
 
   .process-cards {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 12px;
+    width: max-content;
+    min-width: max-content;
   }
 
   .process-card {
-    min-height: 115px;
+    flex: 0 0 135px;
+    min-height: 105px;
+    padding: 14px 10px;
+    border-radius: 12px;
+  }
+
+  .process-connector {
+    display: block;
+    top: 50%;
+    left: 1rem;
+    right: 1rem;
+  }
+
+  .process-particle {
+    display: block;
+  }
+
+  .process-icon {
+    width: 28px;
+    height: 28px;
+    margin-bottom: 3px;
+  }
+
+  .process-step {
+    font-size: 8px;
+  }
+
+  .process-card h3 {
+    font-size: 13px;
   }
 
   .process-hint {

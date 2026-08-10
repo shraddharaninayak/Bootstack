@@ -8,6 +8,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 import useReveal from "../hooks/useReveal";
+import aboutImage from "../assets/about.jpeg";
 
 const CHIPS = [
   { label: "Consult", icon: Target },
@@ -27,11 +28,14 @@ export default function About() {
           visible ? "reveal-visible" : "reveal"
         }`}
       >
-        {/* Placeholder image */}
-        <div className="aspect-[4/3] rounded-card bg-white border border-line flex items-center justify-center order-1 md:order-1">
-          <div className="flex flex-col items-center gap-2 text-ink-500">
-            <Image size={36} strokeWidth={1.5} />
-            <span className="text-xs">Team / studio photo placeholder</span>
+        {/* About Image */}
+        <div className="order-1 md:order-1">
+          <div className="overflow-hidden rounded-3xl">
+            <img
+              src={aboutImage}
+              alt="Bootstack team"
+              className="w-full aspect-[4/4] object-cover rounded-3xl"
+            />
           </div>
         </div>
 

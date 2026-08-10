@@ -1,61 +1,42 @@
 import { useEffect, useState } from "react";
+import { Search, GitBranch, Code2, Rocket, TrendingUp } from "lucide-react";
 import useReveal from "../hooks/useReveal";
 
 const STAGES = [
   {
     step: "01",
     title: "Consult",
+    icon: Search,
     description:
       "We start by understanding your business inside-out—your goals, challenges, and opportunities.",
-    points: [
-      "Business & brand discovery",
-      "Goal alignment & clarity",
-      "Market & competitor insights",
-    ],
   },
   {
     step: "02",
     title: "Strategy",
+    icon: GitBranch,
     description:
       "We design a custom growth blueprint aligned with your business objectives.",
-    points: [
-      "Brand positioning",
-      "Marketing & funnel strategy",
-      "KPI mapping 7 growth roadmap",
-    ],
   },
   {
     step: "03",
     title: "Build",
+    icon: Code2,
     description:
       "We bring the strategy to life by building assets, systems, and execution layers.",
-    points: [
-      "Website, Funnel & CRM setup",
-      "Content creation(reels, creative, assets)",
-      "Campaign & automation setup",
-    ],
   },
   {
     step: "04",
     title: "Launch",
+    icon: Rocket,
     description:
       "We deploy everything with precision and track performance from day one.",
-    points: [
-      "Campaign execution & rollout",
-      "Tracking & analytics setup",
-      "Testing & Performance optimization",
-    ],
   },
   {
     step: "05",
     title: "Scale",
+    icon: TrendingUp,
     description:
       "We double down on what works and turn it into consistent growth.",
-    points: [
-      "Data-driven optimization",
-      "Performace scaling (ads,funnels)",
-      "System improvements & automation",
-    ],
   },
 ];
 
@@ -78,120 +59,65 @@ export default function Process() {
   }, [visible]);
 
   return (
-  <section className="section bg-white">
-    <div
-      ref={ref}
-      className={`w-full ${
-        visible ? "reveal-visible" : "reveal"
-      }`}
-    >
-  
+    <section className="section bg-brand-bg">
+      <div
+        ref={ref}
+        className={`container-inner ${visible ? "reveal-visible" : "reveal"}`}
+      >
         {/* Heading */}
-        <div className="text-center max-w-2xl mx-auto">
-  <span className="eyebrow">OUR PROCESS</span>
+        <div className="text-center max-w-2xl mx-auto pt-6">
+          <div className="eyebrow">OUR PROCESS</div>
 
-<h2 className="text-4xl md:text-5xl font-bold">
-    <span className="text-brand-cyan">
-      How We
-    </span>{" "}
-    <span className="text-brand-blue">
-      Work.
-    </span>
-  </h2>
-</div>
+          <h2 className="text-4xl md:text-5xl font-bold section-gradient-heading">
+            How We Work.
+          </h2>
+        </div>
 
         {/* Timeline Box */}
-        <div className="mt-20 relative">
+        <div className="mt-10 relative">
+          {/* Main process container */}
+          <div className="process-flow">
+            {/* Connection line */}
+            <div className="process-connector">
+              <div className="process-connector-base"></div>
+              <div className="process-connector-glow"></div>
 
-          <div className="relative">
-
-            {/* Connector Line + Flow Particles */}
-            <div className="hidden lg:block absolute top-7 left-0 right-0 h-[2px] overflow-hidden">
-
-              {/* Static Line */}
-              <div className="absolute inset-0 bg-[#D8E7EC] shadow-[0_0_12px_rgba(64,168,196,0.25)]"></div>
-
-              {/* Moving Particles */}
-              <span className="flow-dot dot1"></span>
-              <span className="flow-dot dot2"></span>
-              <span className="flow-dot dot3"></span>
-              <span className="flow-dot dot4"></span>
-              <span className="flow-dot dot5"></span>
-
+              {/* Moving particles */}
+              <span className="process-particle particle-1"></span>
+              <span className="process-particle particle-2"></span>
+              <span className="process-particle particle-3"></span>
+              <span className="process-particle particle-4"></span>
+              <span className="process-particle particle-5"></span>
+              <span className="process-particle particle-6"></span>
+              <span className="process-particle particle-7"></span>
+              <span className="process-particle particle-8"></span>
+              <span className="process-particle particle-9"></span>
+              <span className="process-particle particle-10"></span>
             </div>
 
-            
-
-            {/* Process Steps */}
-            <div className="relative z-10 flex justify-between items-start w-full">
-              {STAGES.map(({ step, title, description, points }, index) => (
-
+            {/* Process Cards */}
+            <div className="process-cards">
+              {STAGES.map(({ step, title, icon: Icon }, index) => (
                 <div
-                key={step}
-                className="group flex-1 flex flex-col items-center text-center"
+                  key={step}
+                  className={`process-card ${
+                    activeStep === index ? "process-card-active" : ""
+                  }`}
                 >
+                  {/* Icon */}
+                  <div className="process-icon">
+                    <Icon size={19} strokeWidth={1.8} />
+                  </div>
 
-               <div
-  className={`w-14 h-14 rounded-full
-    text-white
-    font-display
-    font-bold
-    flex
-    items-center
-    justify-center
-    transition-all
-    duration-500
-    ${
-      activeStep === index
-    ? "bg-brand-cyan scale-110 shadow-[0_0_40px_rgba(64,168,196,0.75)] ring-4 ring-cyan-200/40"        : "bg-brand-blue shadow-lg"
-    }`}
->
-  {step}
-</div>
+                  {/* Step number */}
+                  <span className="process-step">{step}</span>
 
-<h3
-  className={`mt-5 text-lg font-display font-bold transition-all duration-500 ${
-    activeStep === index ? "text-brand-cyan scale-105" : "text-ink-900"
-  }`}
->
-  {title}
-</h3>
-
-<p className="mt-3 text-sm text-ink-500 leading-relaxed max-w-[220px]">
-  {description}
-</p>
-
-<div
-  className="
-    mt-4
-    max-w-[220px]
-    overflow-hidden
-    max-h-0
-    opacity-0
-    transition-all
-    duration-500
-    group-hover:max-h-48
-    group-hover:opacity-100
-  "
->
-  <p className="text-sm font-semibold text-brand-blue">
-    What we do
-  </p>
-
-  <ul className="mt-3 space-y-2 text-sm text-left text-ink-500">
-    {points.map((point) => (
-      <li key={point}>• {point}</li>
-    ))}
-  </ul>
-</div>
-</div>
-
+                  {/* Title */}
+                  <h3>{title}</h3>
+                </div>
               ))}
-
             </div>
-
           </div>
-
         </div>
       </div>
     </section>

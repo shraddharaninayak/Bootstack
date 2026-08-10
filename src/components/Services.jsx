@@ -8,14 +8,13 @@ const SERVICES = [
     category: "Marketing",
     title: "Performance Marketing",
     description:
-      "Generate quality leads and grow your business with data-driven advertising on Google, Meta and other digital platforms.",
-  },
+      "Reach the right audience, attract potential customers and turn advertising campaigns into meaningful business results.",  },
   {
     slug: "social-media-management",
     category: "Marketing",
     title: "Social Media Management",
     description:
-      "Build a strong online presence with engaging content, consistent branding and strategic social media management.",
+      "Build your brand presence on social platforms through engaging content, consistent communication and an active community.",
   },
 
   {
@@ -23,14 +22,14 @@ const SERVICES = [
     category: "Branding",
     title: "Branding & UI/UX",
     description:
-      "Create memorable brand identities and intuitive user experiences that connect with your audience.",
+      "Shape a distinctive brand identity and create digital experiences that make your business easy to recognize and remember.",
   },
   {
     slug: "brand-consultation",
     category: "Branding",
     title: "Brand Consultation",
     description:
-      "Get expert guidance to define your brand strategy, strengthen your positioning and unlock new growth opportunities.",
+      "Define your brand direction, understand your market and build a clear strategy that helps your business stand apart.",
   },
 
   {
@@ -44,14 +43,14 @@ const SERVICES = [
     category: "Development",
     title: "Software Development",
     description:
-      "Develop custom software solutions that simplify operations, improve efficiency, and support your business goals.",
+      "Build custom software that solves business challenges, simplifies everyday processes and supports long term growth.",
   },
   {
     slug: "app-development",
     category: "Development",
     title: "App Development",
     description:
-      "Create secure, high-performance mobile applications that deliver seamless experiences on Android and iOS.",
+      "Develop mobile applications that are easy to use, reliable and designed around the needs of your customers.",
   },
 
   {
@@ -59,7 +58,7 @@ const SERVICES = [
     category: "Automation",
     title: "Marketing Automation",
     description:
-      "Automate repetitive marketing tasks, nurture leads and improve customer engagement with smart workflows.",
+      "Connect your marketing activities with smart workflows that save time, manage leads and keep customer communication consistent.",
   },
 ];
 

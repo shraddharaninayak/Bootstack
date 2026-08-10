@@ -7,29 +7,18 @@ export default function CTA() {
     <section className="section bg-[#EEF6F7]">
       <div
         ref={ref}
-        className={`container-inner ${
-          visible ? "reveal-visible" : "reveal"
-        }`}
+        className={`container-inner ${visible ? "reveal-visible" : "reveal"}`}
       >
         <div className="flex flex-col items-center justify-center text-center py-10 lg:py-16">
-
           {/* Eyebrow */}
           <span className="text-sm uppercase tracking-[0.3em] text-brand-blue font-semibold">
             START YOUR PROJECT
           </span>
 
           {/* Heading */}
-          <h2
-            className="mt-6 max-w-[800px] font-bold leading-[1.02] tracking-tight"
-            style={{ fontFamily: '"Bricolage Grotesque", sans-serif' }}
-          >
-            <span className="block text-5xl lg:text-[56px] text-brand-blue">
-              Let's Build Your
-            </span>
-
-            <span className="block text-5xl lg:text-[56px] text-brand-cyan">
-              Growth System.
-            </span>
+          <h2 className="text-5xl lg:text-[56px] font-bold section-gradient-heading">
+            Let's Build Your
+            <span className="block">Growth System.</span>
           </h2>
 
           {/* Description */}
@@ -68,7 +57,6 @@ export default function CTA() {
           >
             Start Your Project →
           </a>
-
         </div>
       </div>
     </section>

@@ -43,7 +43,9 @@ function FAQItem({ question, answer, isOpen, onToggle }) {
         className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left"
         aria-expanded={isOpen}
       >
-        <span className="font-display font-semibold text-ink-900">{question}</span>
+        <span className="font-display font-semibold text-ink-900">
+          {question}
+        </span>
         <span className="shrink-0 w-8 h-8 rounded-full bg-brand-bg text-brand-blue flex items-center justify-center">
           {isOpen ? <Minus size={16} /> : <Plus size={16} />}
         </span>
@@ -54,7 +56,9 @@ function FAQItem({ question, answer, isOpen, onToggle }) {
         }`}
       >
         <div className="overflow-hidden">
-          <p className="px-6 pb-5 text-sm text-ink-500 leading-relaxed">{answer}</p>
+          <p className="px-6 pb-5 text-sm text-ink-500 leading-relaxed">
+            {answer}
+          </p>
         </div>
       </div>
     </div>
@@ -67,10 +71,13 @@ export default function FAQ() {
 
   return (
     <section className="section bg-white">
-      <div className={`container-inner max-w-3xl ${visible ? "reveal-visible" : "reveal"}`} ref={ref}>
+      <div
+        className={`container-inner max-w-3xl ${visible ? "reveal-visible" : "reveal"}`}
+        ref={ref}
+      >
         <div className="text-center">
           <span className="eyebrow">Frequently Asked Questions</span>
-          <h2 className="section-heading">FAQs</h2>
+          <h2 className="section-heading section-gradient-heading">FAQs</h2>
         </div>
 
         <div className="mt-10 flex flex-col gap-4">

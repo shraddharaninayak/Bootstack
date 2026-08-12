@@ -28,7 +28,7 @@ export default function WhyBootstackSection({ service }) {
           {/* Heading */}
 
           <h2 className="mt-5 text-5xl font-bold text-[#0F2743]">
-            Why Bootstack
+            How we're different
           </h2>
 
           {/* Description */}

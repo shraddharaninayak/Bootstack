@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import useReveal from "../hooks/useReveal";
 import { Link } from "react-router-dom";
@@ -8,13 +9,14 @@ const SERVICES = [
     category: "Marketing",
     title: "Performance Marketing",
     description:
-      "Reach the right audience, attract potential customers and turn advertising campaigns into meaningful business results.",  },
+      "Generate quality leads and grow your business with data driven advertising on Google, Meta and other digital platforms.",
+  },
   {
     slug: "social-media-management",
     category: "Marketing",
     title: "Social Media Management",
     description:
-      "Build your brand presence on social platforms through engaging content, consistent communication and an active community.",
+      "Build a strong online presence with engaging content, consistent branding and strategic social media management.",
   },
 
   {
@@ -22,35 +24,35 @@ const SERVICES = [
     category: "Branding",
     title: "Branding & UI/UX",
     description:
-      "Shape a distinctive brand identity and create digital experiences that make your business easy to recognize and remember.",
+      "Create memorable brand identities and intuitive user experiences that connect with your audience.",
   },
   {
     slug: "brand-consultation",
     category: "Branding",
     title: "Brand Consultation",
     description:
-      "Define your brand direction, understand your market and build a clear strategy that helps your business stand apart.",
+      "Get expert guidance to define your brand strategy, strengthen your positioning and unlock new growth opportunities.",
   },
 
   {
     slug: "website-development",
     title: "Website Development",
     description:
-      "Build fast, responsive and SEO-friendly websites that create great first impressions and convert visitors into customers.",
+      "Build fast, responsive and SEO friendly websites that create great first impressions and convert visitors into customers.",
   },
   {
     slug: "software-development",
     category: "Development",
     title: "Software Development",
     description:
-      "Build custom software that solves business challenges, simplifies everyday processes and supports long term growth.",
+      "Develop custom software solutions that simplify operations, improve efficiency and support your business goals..",
   },
   {
     slug: "app-development",
     category: "Development",
     title: "App Development",
     description:
-      "Develop mobile applications that are easy to use, reliable and designed around the needs of your customers.",
+      "Create secure, high performance mobile applications that deliver seamless experiences on Android and iOS.",
   },
 
   {
@@ -58,12 +60,49 @@ const SERVICES = [
     category: "Automation",
     title: "Marketing Automation",
     description:
-      "Connect your marketing activities with smart workflows that save time, manage leads and keep customer communication consistent.",
+      "Automate repetitive marketing tasks, nurture leads and improve customer engagement with smart workflows.",
   },
 ];
 
 export default function Services() {
   const [ref, visible] = useReveal();
+
+  const servicesGridRef = useRef(null);
+  const [visibleCards, setVisibleCards] = useState({});
+  const [openingService, setOpeningService] = useState(null);
+
+  useEffect(() => {
+    const grid = servicesGridRef.current;
+
+    if (!grid) return;
+
+    const cards = grid.querySelectorAll(".service-scroll-card");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = Number(entry.target.dataset.index);
+
+            setVisibleCards((prev) => ({
+              ...prev,
+              [index]: true,
+            }));
+
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.15,
+        rootMargin: "0px 0px -40px 0px",
+      },
+    );
+
+    cards.forEach((card) => observer.observe(card));
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section id="services" className="section bg-white">
@@ -80,60 +119,87 @@ export default function Services() {
           </h2>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div
+          ref={servicesGridRef}
+          className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6"
+        >
           {SERVICES.map((service, index) => (
             <Link
               to={`/our-services/${service.slug}`}
               state={{ scrollTo: "services" }}
               key={service.slug}
-              className={`
-    group
-    relative
-    flex
-    flex-col
-    min-h-[280px]
-    overflow-hidden
-    rounded-[24px]
-    border
-    border-line
-    bg-white
-    px-8 py-7
-    shadow-card
-    transition-all
-    duration-500
-    hover:-translate-y-3
-    hover:shadow-[0_20px_45px_rgba(64,168,196,.18)]
-    hover:border-brand-cyan
+              onClick={(e) => {
+                if (window.innerWidth < 1024) {
+                  e.preventDefault();
 
-    ${index % 2 === 0 ? "mt-0" : "mt-10"}
-  `}
+                  setOpeningService(index);
+
+                  setTimeout(() => {
+                    window.location.href = `/our-services/${service.slug}`;
+                  }, 450);
+                }
+              }}
+              data-index={index}
+              style={{
+                "--service-direction": index % 2 === 0 ? "-40px" : "40px",
+              }}
+              className={`
+  group
+  service-mobile-card
+  service-scroll-card
+  relative
+  flex
+  flex-col
+  min-h-[280px]
+  overflow-hidden
+  rounded-[24px]
+  border
+  border-line
+  bg-white
+  px-8 py-7
+  shadow-card
+  transition-all
+  duration-500
+  hover:-translate-y-3
+  hover:shadow-[0_20px_45px_rgba(64,168,196,.18)]
+  hover:border-brand-cyan
+
+  ${index % 2 === 0 ? "mt-0" : "mt-0 lg:mt-10"}
+
+  ${visibleCards[index] ? "service-card-visible" : ""}
+
+  ${openingService === index ? "service-glass-active" : ""}
+`}
             >
+              <span className="service-accent-line" />
+
               <h3 className="text-2xl font-display font-bold leading-tight">
                 {service.title}
               </h3>
+
               <div
                 className="
-    mt-4
-    overflow-hidden
-    transition-all
-    duration-500
-    max-h-14
-    group-hover:max-h-40
-  "
+          mt-4
+          overflow-hidden
+          transition-all
+          duration-500
+          max-h-14
+          group-hover:max-h-40
+        "
               >
                 <p className="text-ink-500 leading-relaxed">
                   {service.description}
                 </p>
               </div>
 
-              <div className="mt-10 inline-flex items-center gap-2 font-semibold text-brand-blue transition-all duration-300 group-hover:text-brand-yellow">
+              <div className="mt-10 inline-flex items-center gap-2 font-semibold text-brand-blue transition-all duration-300 group-hover:text-brand-yellow active:text-brand-yellow active:scale-95">
+                {" "}
                 <span className="border-b border-transparent transition-all duration-300 group-hover:border-brand-yellow">
                   Explore
                 </span>
-
                 <ArrowRight
                   size={18}
-                  className="transition-all duration-300 group-hover:translate-x-2"
+                  className="service-explore-arrow transition-all duration-300 group-hover:translate-x-2"
                 />
               </div>
             </Link>

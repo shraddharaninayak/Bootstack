@@ -5,7 +5,7 @@ const servicesData = [
     slug: "erp-solutions",
     icon: Workflow,
 
-    title: "ERP Solutions",
+    title: "ERP Solutions that run the whole operation",
 
     subtitle:
       "Streamline your operations with custom ERP systems designed to manage sales, inventory, projects, finance HR and business workflows all in one platform.",
@@ -13,7 +13,8 @@ const servicesData = [
     about: {
       heading: "About",
       description:
-        "Every business works differently, so your software should too. We build custom ERP solutions that bring your sales, inventory, finance, HR and operations together in one easy-to-use system.",
+        "Bootstack builds custom ERP solutions around how your business actually works, not around a vendor’s template. We connect sales, inventory, finance, HR, procurement and operations into one easy to use system, while mapping processes, removing duplicate steps, and creating workflows your teams can trust. Our modular approach also lets you roll out each function in stages, reducing the risk of a high-pressure, all-at-once transition.",
+        /*Every business works differently, so your software should too. We build custom ERP solutions that bring your sales, inventory, finance, HR and operations together in one easy-to-use system.*/
     },
 
     whyItMatters: {
@@ -27,7 +28,7 @@ const servicesData = [
     },
 
     whyBootstack: {
-      heading: "Why Bootstack",
+      heading: "Why Bootstact",
       description:
         "We don't believe in one-size-fits-all software. We understand your business, design the right solution and build an ERP that grows with you.",
     },
@@ -97,6 +98,12 @@ const servicesData = [
       description:
         "We create mobile apps that are fast, easy to use and built around your business goals. Whether it's for your customers or your team, we make apps that deliver real value.",
     },
+
+    cta: {
+  title: "Ready to Build Your App?",
+  button: "Book a Free Consultation",
+},
+
 whyItMatters: {
   heading: "Why It Matters",
   statements: [
@@ -229,6 +236,12 @@ whyItMatters: {
     title: "Launch & Support",
   },
 ],
+
+cta: {
+  title: "Ready to Build a Better Website?",
+  button: "Book a Free Consultation",
+},
+
   },
 
   //lead-generation

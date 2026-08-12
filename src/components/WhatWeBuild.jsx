@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Building2Icon,
   Smartphone,
@@ -70,19 +71,8 @@ const ITEMS = [
 export default function WhatWeBuild() {
   const [ref, visible] = useReveal();
   const [active, setActive] = useState(0);
-
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1024); // Tailwind lg breakpoint
-    };
-
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
+  const [mobileActive, setMobileActive] = useState(null);
+  const navigate = useNavigate();
 
   return (
     <section className="section bg-brand-bg">
@@ -105,59 +95,106 @@ export default function WhatWeBuild() {
               {ITEMS.map((item, index) => {
                 const Icon = item.icon;
 
+                const serviceUrl = `/services/${item.title
+                  .toLowerCase()
+                  .replace(/&/g, "")
+                  .replace(/\s+/g, "-")}`;
+
                 return (
-                  <button
-                    key={item.title}
-                    style={{ "--delay": `${index * 100}ms` }}
-                    onMouseEnter={() => {
-                      if (!isMobile) setActive(index);
-                    }}
-                    onClick={() => {
-                      if (isMobile) setActive(index);
-                    }}
-                    //           className={`w-full rounded-xl border p-5 text-left transition-all duration-300 ${
-                    //   active === index
-                    //     ? "border-[#40A8C4] bg-sky-50 shadow-md"
-                    //     : "border-gray-200 hover:border-[#40A8C4]"
-                    // }`}
-                    className={`what-build-card w-full rounded-xl border p-5 text-left transition-all duration-300 ${
-                      active === index
-                        ? "border-[#F7AA00] bg-[#FFF8E6] shadow-lg"
-                        : "border-gray-200 hover:border-[#F7AA00] hover:bg-[#FFF8E6]"
-                    }`}
-                  >
-                    <div className="flex items-center gap-4">
-                      <Icon
-                        size={24}
-                        className={
-                          active === index ? "text-[#F7AA00]" : "text-[#235784]"
-                        }
-                      />
+                  <div key={item.title}>
+                    {/* DESKTOP VERSION - unchanged */}
 
-                      {/* <h3 className="font-bold text-lg">
-              {item.title}
-            </h3> */}
+                    <button
+                      style={{ "--delay": `${index * 100}ms` }}
+                      onMouseEnter={() => setActive(index)}
+                      className={`what-build-card hidden lg:block w-full rounded-xl border p-5 text-left transition-all duration-300 ${
+                        active === index
+                          ? "border-[#F7AA00] bg-[#FFF8E6] shadow-lg"
+                          : "border-gray-200 hover:border-[#F7AA00] hover:bg-[#FFF8E6]"
+                      }`}
+                    >
+                      <div className="flex items-center gap-4">
+                        <Icon
+                          size={24}
+                          className={
+                            active === index
+                              ? "text-[#F7AA00]"
+                              : "text-[#235784]"
+                          }
+                        />
 
-                      <h3
-                        className={`font-bold text-lg transition-colors ${
-                          active === index ? "text-[#F7AA00]" : "text-[#235784]"
+                        <h3
+                          className={`font-bold text-lg transition-colors ${
+                            active === index
+                              ? "text-[#F7AA00]"
+                              : "text-[#235784]"
+                          }`}
+                        >
+                          {item.title}
+                        </h3>
+                      </div>
+                    </button>
+
+                    {/* MOBILE VERSION */}
+                    <motion.div
+                      className="lg:hidden"
+                      whileTap={{
+                        scale: 0.96,
+                        y: -2,
+                      }}
+                      transition={{
+                        duration: 0.15,
+                      }}
+                    >
+                      <Link
+                        to={serviceUrl}
+                        onClick={(e) => {
+                          e.preventDefault();
+
+                          setMobileActive(index);
+
+                          setTimeout(() => {
+                            navigate(serviceUrl);
+                          }, 900);
+                        }}
+                        className={`mobile-service-card flex w-full items-center justify-between rounded-xl border p-4 text-left transition-all duration-300 ${
+                          mobileActive === index
+                            ? "border-[#F7AA00] bg-[#FFF8E6] shadow-lg -translate-y-1 scale-[1.02]"
+                            : "border-gray-200 bg-transparent"
                         }`}
                       >
-                        {item.title}
-                      </h3>
-                    </div>
-                  </button>
+                        <div className="flex items-center gap-4">
+                          <Icon size={20} className="text-[#235784]" />
+
+                          <h3 className="font-bold text-sm text-[#235784]">
+                            {item.title}
+                          </h3>
+                        </div>
+
+                        <span
+                          className={`text-lg font-semibold transition-transform duration-300 ${
+                            mobileActive === index
+                              ? "translate-x-2 text-[#F7AA00]"
+                              : "text-[#235784]"
+                          }`}
+                        >
+                          →
+                        </span>
+                      </Link>
+                    </motion.div>
+                  </div>
                 );
               })}
             </div>
 
-            {/* Right Side */}
-            <div className="rounded-2xl border border-gray-200 bg-brand-bg p-10 shadow-lg">
-              {" "}
+            {/* Right Side - DESKTOP ONLY */}
+            <div className="hidden lg:block rounded-2xl border border-gray-200 bg-brand-bg p-10 shadow-lg">
               <h3 className="text-3xl font-bold">{ITEMS[active].title}</h3>
+
               <p className="mt-5 text-gray-600 leading-8">
                 {ITEMS[active].description}
               </p>
+
               <ul className="mt-8 grid grid-cols-2 gap-x-8 gap-y-6">
                 {ITEMS[active].features.map((feature, index) => (
                   <li key={feature} className="flex items-start gap-3">
@@ -169,6 +206,7 @@ export default function WhatWeBuild() {
                   </li>
                 ))}
               </ul>
+
               <Link
                 to={`/services/${ITEMS[active].title
                   .toLowerCase()

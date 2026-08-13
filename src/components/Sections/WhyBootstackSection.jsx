@@ -4,10 +4,10 @@ import { useState } from "react";
 export default function WhyBootstackSection({ service }) {
   const [activeIndex, setActiveIndex] = useState(null);
   return (
-    <section className="py-24">
-      <div className="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-2">
+    <section className="relative z-[2] bg-transparent py-16 md:py-20">
+      <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-2">
+        {" "}
         {/* Left */}
-
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -27,7 +27,7 @@ export default function WhyBootstackSection({ service }) {
 
           {/* Heading */}
 
-          <h2 className="mt-5 text-5xl font-bold text-[#0F2743]">
+          <h2 className="text-4xl md:text-5xl font-bold section-gradient-heading">
             How we're different
           </h2>
 
@@ -37,9 +37,7 @@ export default function WhyBootstackSection({ service }) {
             {service.whyBootstack.description}
           </p>
         </motion.div>
-
         {/* Right */}
-
         <motion.div
           initial={{ opacity: 0, x: 40 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -48,19 +46,19 @@ export default function WhyBootstackSection({ service }) {
         >
           {service.whyBootstackPoints.map((title, index) => (
             <div
-  key={index}
-  className="group cursor-pointer"
-  onClick={() =>
-    setActiveIndex(activeIndex === index ? null : index)
-  }
->
+              key={index}
+              className="group cursor-pointer"
+              onClick={() =>
+                setActiveIndex(activeIndex === index ? null : index)
+              }
+            >
               <h3
-  className={`text-5xl font-black transition-all duration-300 ${
-    activeIndex === index
-      ? "text-[#F7AA00] scale-110"
-      : "text-[#235784]/20 group-hover:text-[#F7AA00]"
-  }`}
->
+                className={`text-5xl font-black transition-all duration-300 ${
+                  activeIndex === index
+                    ? "text-[#F7AA00] scale-110"
+                    : "text-[#235784]/20 group-hover:text-[#F7AA00]"
+                }`}
+              >
                 {String(index + 1).padStart(2, "0")}
               </h3>
 
@@ -69,12 +67,10 @@ export default function WhyBootstackSection({ service }) {
               </h4>
 
               <div
-  className={`mt-6 h-[2px] bg-[#40A8C4] transition-all duration-300 ${
-    activeIndex === index
-      ? "w-32"
-      : "w-20 group-hover:w-32"
-  }`}
-/>
+                className={`mt-6 h-[2px] bg-[#40A8C4] transition-all duration-300 ${
+                  activeIndex === index ? "w-32" : "w-20 group-hover:w-32"
+                }`}
+              />
             </div>
           ))}
         </motion.div>

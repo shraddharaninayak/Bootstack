@@ -4,9 +4,9 @@ export default function ProcessSection({ service }) {
   if (!service?.process?.length) return null;
 
   return (
-    <section className="bg-white py-28">
+    <section id="process" className="bg-transparent py-16 md:py-20">
+      {" "}
       <div className="mx-auto max-w-7xl px-6">
-
         {/* Heading */}
 
         <div className="max-w-2xl">
@@ -17,7 +17,7 @@ export default function ProcessSection({ service }) {
             </span>
           </div>
 
-          <h2 className="mt-5 text-5xl font-bold text-[#0F2743]">
+          <h2 className="mt-5 text-5xl font-bold section-gradient-heading">
             The Process
           </h2>
         </div>
@@ -25,7 +25,6 @@ export default function ProcessSection({ service }) {
         {/* Desktop */}
 
         <div className="relative mt-16 hidden lg:block">
-
           <div className="absolute left-0 right-0 top-[13px] h-px bg-gradient-to-r from-[#235784]/40 via-[#40A8C4] to-[#40A8C4]/10" />
 
           <div
@@ -63,12 +62,10 @@ export default function ProcessSection({ service }) {
         {/* Mobile */}
 
         <div className="relative mt-12 space-y-10 pl-10 lg:hidden">
-
           <div className="absolute bottom-2 left-[13px] top-2 w-px bg-gradient-to-b from-[#235784]/40 via-[#40A8C4] to-[#40A8C4]/10" />
 
           {service.process.map((step, index) => (
             <div key={index} className="relative">
-
               <div className="absolute -left-10 flex h-8 w-8 items-center justify-center rounded-full border border-[#40A8C4]/40 bg-white text-xs font-bold text-[#235784]">
                 {index + 1}
               </div>
@@ -76,11 +73,9 @@ export default function ProcessSection({ service }) {
               <h3 className="text-lg font-semibold text-[#0F2743]">
                 {step.title}
               </h3>
-
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

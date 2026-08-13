@@ -150,7 +150,7 @@ export default function Services() {
   relative
   flex
   flex-col
-  min-h-[280px]
+  min-h-[200px]
   overflow-hidden
   rounded-[24px]
   border
@@ -164,16 +164,14 @@ export default function Services() {
   hover:shadow-[0_20px_45px_rgba(64,168,196,.18)]
   hover:border-brand-cyan
 
-  ${index % 2 === 0 ? "mt-0" : "mt-0 lg:mt-10"}
-
   ${visibleCards[index] ? "service-card-visible" : ""}
 
   ${openingService === index ? "service-glass-active" : ""}
 `}
             >
               <span className="service-accent-line" />
-
-              <h3 className="text-2xl font-display font-bold leading-tight">
+              
+              <h3 className="text-2xl font-display font-bold leading-tight section-gradient-heading">
                 {service.title}
               </h3>
 

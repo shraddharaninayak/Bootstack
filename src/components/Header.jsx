@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { Menu, X, ChevronDown, ArrowUpRight } from "lucide-react";
 import logo from "../assets/bootstack_logo.png"; // Adjust the path to your logo image
 import ConsultationModal from "./ConsultationModal";
@@ -12,14 +13,38 @@ const NAV_LINKS = [
 ];
 
 const SERVICES = [
-  "Performance Marketing",
-  "Social Media Management",
-  "Branding & UI/UX",
-  "Brand Consultation",
-  "Website Development",
-  "Software Development",
-  "App Development",
-  "Marketing Automation",
+  {
+    label: "Performance Marketing",
+    slug: "performance-marketing",
+  },
+  {
+    label: "Social Media Management",
+    slug: "social-media-management",
+  },
+  {
+    label: "Branding & UI/UX",
+    slug: "branding-uiux",
+  },
+  {
+    label: "Brand Consultation",
+    slug: "brand-consultation",
+  },
+  {
+    label: "Website Development",
+    slug: "website-development",
+  },
+  {
+    label: "Software Development",
+    slug: "software-development",
+  },
+  {
+    label: "App Development",
+    slug: "app-development",
+  },
+  {
+    label: "Marketing Automation",
+    slug: "marketing-automation",
+  },
 ];
 
 const WHATSAPP_MESSAGE =
@@ -81,6 +106,8 @@ export default function Header() {
                     onMouseLeave={() => setServicesOpen(false)}
                   >
                     <button
+                      type="button"
+                      onClick={() => setServicesOpen((prev) => !prev)}
                       className={`flex items-center gap-1 text-[15px] font-semibold transition-all duration-300 ${
                         scrolled ? "text-[#1A425F]" : "text-[#40A8C4]"
                       } hover:text-[#F7AA00]`}
@@ -106,13 +133,14 @@ export default function Header() {
                         >
                           <div className="grid grid-cols-2 gap-x-8 gap-y-1">
                             {SERVICES.map((service) => (
-                              <a
-                                key={service}
-                                href="#services"
+                              <Link
+                                key={service.slug}
+                                to={`/our-services/${service.slug}`}
+                                onClick={() => setServicesOpen(false)}
                                 className="rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition-all duration-300 hover:bg-[#EEF6F7] hover:text-[#235784] hover:translate-x-0.5"
                               >
-                                {service}
-                              </a>
+                                {service.label}
+                              </Link>
                             ))}
                           </div>
                         </motion.div>

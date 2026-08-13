@@ -7,11 +7,11 @@ export default function WhyItMattersSection({ service }) {
     service.whyItMatters.statements ||
     [service.whyItMatters.description];
 
-  return (
-    <section
-      id="why-it-matters"
-      className="relative overflow-hidden bg-[#EEF6F7] py-32"
-    >
+ return (
+  <section
+    id="why-it-matters"
+    className="relative overflow-hidden bg-transparent py-20"
+  >
       {/* Background Glow */}
       <div className="absolute left-1/2 top-0 h-96 w-96 -translate-x-1/2 rounded-full bg-cyan-200/30 blur-3xl" />
 

@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { Menu, X, ChevronDown, ArrowUpRight } from "lucide-react";
 import logo from "../assets/bootstack_logo.png"; // Adjust the path to your logo image
 import ConsultationModal from "./ConsultationModal";
 
@@ -11,15 +13,48 @@ const NAV_LINKS = [
 ];
 
 const SERVICES = [
-  "Performance Marketing",
-  "Social Media Management",
-  "Branding & UI/UX",
-  "Brand Consultation",
-  "Website Development",
-  "Software Development",
-  "App Development",
-  "Marketing Automation",
+  {
+    label: "Performance Marketing",
+    slug: "performance-marketing",
+  },
+  {
+    label: "Social Media Management",
+    slug: "social-media-management",
+  },
+  {
+    label: "Branding & UI/UX",
+    slug: "branding-uiux",
+  },
+  {
+    label: "Brand Consultation",
+    slug: "brand-consultation",
+  },
+  {
+    label: "Website Development",
+    slug: "website-development",
+  },
+  {
+    label: "Software Development",
+    slug: "software-development",
+  },
+  {
+    label: "App Development",
+    slug: "app-development",
+  },
+  {
+    label: "Marketing Automation",
+    slug: "marketing-automation",
+  },
 ];
+
+const WHATSAPP_MESSAGE =
+  "Hi Bootstack Team,\n\nI visited your website and would like to discuss my project. Please get in touch with me.";
+
+function openWhatsapp() {
+  const phone = "919975499956"; // Country code + number (no +, no spaces)
+  const message = encodeURIComponent(WHATSAPP_MESSAGE);
+  window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
+}
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -36,25 +71,32 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="fixed top-6 left-0 right-0 z-50 px-6">
+    <motion.header
+      initial={{ y: -24, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: [0.16, 0.84, 0.44, 1] }}
+      className="fixed top-6 left-0 right-0 z-50 px-6"
+    >
       <div
         className={`mx-auto max-w-7xl rounded-full transition-all duration-500 ${
-  scrolled
-    ? "bg-transparent backdrop-blur-xl border border-white/20"
-    : "bg-transparent backdrop-blur-xl border border-white/20"
-}`}
+          scrolled
+            ? "bg-white/70 backdrop-blur-xl border border-[#235784]/10 shadow-glow-cyan-sm"
+            : "bg-white/10 backdrop-blur-xl border border-white/25"
+        }`}
       >
         <div className="flex items-center justify-between px-10 py-5">
           {/* Logo */}
           <a href="#home" className="flex items-center">
-          <img
-  src={logo}
-  alt="Bootstack"
-className="h-14 w-auto object-contain scale-[3] origin-left translate-y-[6px]"/>
+            <img
+              src={logo}
+              alt="Bootstack"
+              className="h-14 w-auto object-contain scale-[3] origin-left translate-y-[6px]"
+            />
           </a>
 
           {/* Desktop Navigation */}
-<nav className="hidden md:flex items-center gap-8 ml-auto mr-12">            {NAV_LINKS.map((link) => {
+          <nav className="hidden md:flex items-center gap-8 ml-auto mr-12">
+            {NAV_LINKS.map((link) => {
               if (link.label === "Services") {
                 return (
                   <div
@@ -63,25 +105,47 @@ className="h-14 w-auto object-contain scale-[3] origin-left translate-y-[6px]"/>
                     onMouseEnter={() => setServicesOpen(true)}
                     onMouseLeave={() => setServicesOpen(false)}
                   >
-                  <button className="text-[15px] font-semibold text-[#40A8C4] hover:text-[#F7AA00] transition-all duration-300">
-  Services
-</button>
+                    <button
+                      type="button"
+                      onClick={() => setServicesOpen((prev) => !prev)}
+                      className={`flex items-center gap-1 text-[15px] font-semibold transition-all duration-300 ${
+                        scrolled ? "text-[#1A425F]" : "text-[#40A8C4]"
+                      } hover:text-[#F7AA00]`}
+                    >
+                      Services
+                      <ChevronDown
+                        size={14}
+                        strokeWidth={2.5}
+                        className={`transition-transform duration-300 ${
+                          servicesOpen ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
 
-                    {servicesOpen && (
-                      <div className="absolute top-10 left-0 w-[520px] rounded-2xl bg-white shadow-2xl border border-slate-100 p-6">
-                        <div className="grid grid-cols-2 gap-x-8 gap-y-3">
-                          {SERVICES.map((service) => (
-                            <a
-                              key={service}
-                              href="#services"
-                              className="rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition-all duration-300 hover:bg-[#EEF6F7] hover:text-[#235784]"
-                            >
-                              {service}
-                            </a>
-                          ))}
-                        </div>
-                      </div>
-                    )}
+                    <AnimatePresence>
+                      {servicesOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 8 }}
+                          transition={{ duration: 0.2, ease: "easeOut" }}
+                          className="glass-panel absolute top-10 left-0 w-[520px] rounded-2xl bg-white/90 p-6 shadow-glow-cyan"
+                        >
+                          <div className="grid grid-cols-2 gap-x-8 gap-y-1">
+                            {SERVICES.map((service) => (
+                              <Link
+                                key={service.slug}
+                                to={`/our-services/${service.slug}`}
+                                onClick={() => setServicesOpen(false)}
+                                className="rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition-all duration-300 hover:bg-[#EEF6F7] hover:text-[#235784] hover:translate-x-0.5"
+                              >
+                                {service.label}
+                              </Link>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 );
               }
@@ -90,9 +154,12 @@ className="h-14 w-auto object-contain scale-[3] origin-left translate-y-[6px]"/>
                 <a
                   key={link.label}
                   href={link.href}
-                  className="text-[15px] font-semibold text-[#40A8C4] hover:text-[#F7AA00] transition-all duration-300"
+                  className={`relative text-[15px] font-semibold transition-all duration-300 group ${
+                    scrolled ? "text-[#1A425F]" : "text-[#40A8C4]"
+                  } hover:text-[#F7AA00]`}
                 >
                   {link.label}
+                  <span className="absolute -bottom-1 left-0 h-px w-0 bg-[#F7AA00] transition-all duration-300 group-hover:w-full" />
                 </a>
               );
             })}
@@ -101,16 +168,8 @@ className="h-14 w-auto object-contain scale-[3] origin-left translate-y-[6px]"/>
           {/* CTA */}
           <div className="hidden md:block">
             <button
-              onClick={() => {
-                const phone = "919975499956"; // Country code + number (no +, no spaces)
-
-                const message = encodeURIComponent(
-                  "Hi Bootstack Team,\n\nI visited your website and would like to discuss my project. Please get in touch with me.",
-                );
-
-                window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
-              }}
-              className="rounded-full bg-[#235784] px-7 py-4 text-white font-semibold shadow-lg hover:scale-105 hover:bg-[#1b4568] transition-all duration-300"
+              onClick={openWhatsapp}
+              className="group relative overflow-hidden rounded-full bg-[#235784] px-7 py-4 text-white font-semibold shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1b4568] hover:shadow-glow-cyan active:translate-y-0 active:scale-[0.98]"
             >
               Contact Us
             </button>
@@ -118,46 +177,52 @@ className="h-14 w-auto object-contain scale-[3] origin-left translate-y-[6px]"/>
 
           {/* Mobile Button */}
           <button
-            className="md:hidden text-[#235784]"
+            className={`md:hidden transition-colors duration-300 ${
+              scrolled ? "text-[#235784]" : "text-white"
+            }`}
             onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
           >
             {mobileOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
       </div>
 
-      {mobileOpen && (
-        <div className="mx-6 mt-4 rounded-3xl bg-white shadow-xl p-6 md:hidden">
-          <div className="flex flex-col gap-5">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="font-semibold text-slate-700"
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -12, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -12, scale: 0.98 }}
+            transition={{ duration: 0.25, ease: [0.16, 0.84, 0.44, 1] }}
+            className="glass-panel mx-6 mt-4 rounded-3xl bg-white/90 shadow-glow-cyan p-6 md:hidden"
+          >
+            <div className="flex flex-col gap-5">
+              {NAV_LINKS.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="font-semibold text-[#1A425F] transition-colors duration-300 hover:text-[#F7AA00]"
+                >
+                  {link.label}
+                </a>
+              ))}
+
+              <button
+                onClick={() => {
+                  openWhatsapp();
+                  setMobileOpen(false);
+                }}
+                className="flex items-center justify-center gap-2 rounded-full bg-[#235784] py-4 text-center font-semibold text-white transition-all duration-300 hover:bg-[#1b4568] active:scale-[0.98]"
               >
-                {link.label}
-              </a>
-            ))}
-
-            <button
-              onClick={() => {
-                const phone = "919975499956";
-
-                const message = encodeURIComponent(
-                  "Hi Bootstack Team,\n\nI visited your website and would like to discuss my project. Please get in touch with me.",
-                );
-
-                window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
-                setMobileOpen(false);
-              }}
-              className="rounded-full bg-[#235784] py-4 text-center font-semibold text-white hover:bg-[#1b4568] transition-all duration-300"
-            >
-              Contact Us
-            </button>
-          </div>
-        </div>
-      )}
-    </header>
+                Contact Us
+                <ArrowUpRight size={16} strokeWidth={2.5} />
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.header>
   );
 }

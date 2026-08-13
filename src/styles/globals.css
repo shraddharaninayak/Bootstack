@@ -503,6 +503,136 @@
 }
 
 /* ============================= */
+/* Services Glass / Tech Cards */
+/* ============================= */
+
+.services-section .mt-16 > a {
+  position: relative;
+  overflow: hidden;
+
+  /* Glass surface */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.52),
+    rgba(238, 246, 247, 0.32)
+  );
+
+  border: 1px solid rgba(64, 168, 196, 0.22);
+
+  /* Soft glass shadow */
+  box-shadow:
+    0 12px 30px rgba(35, 87, 132, 0.08),
+    0 4px 10px rgba(64, 168, 196, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  transition:
+    transform 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease,
+    background 0.4s ease;
+}
+
+/* Hover */
+.services-section .mt-16 > a:hover {
+  transform: translateY(-6px);
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(238, 246, 247, 0.9)
+  );
+
+  border-color: rgba(64, 168, 196, 0.5);
+
+  box-shadow:
+    0 20px 45px rgba(35, 87, 132, 0.12),
+    0 0 25px rgba(64, 168, 196, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+/* Top glass highlight */
+.services-section .mt-16 > a::before {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: 8%;
+  right: 8%;
+
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(64, 168, 196, 0.6),
+    transparent
+  );
+
+  opacity: 0.7;
+}
+
+/* Soft tech glow */
+.services-section .mt-16 > a::after {
+  content: "";
+
+  position: absolute;
+
+  width: 150px;
+  height: 150px;
+
+  top: -80px;
+  right: -70px;
+
+  border-radius: 50%;
+
+  background: rgba(64, 168, 196, 0.1);
+
+  filter: blur(35px);
+
+  opacity: 0.45;
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+.services-section .mt-16 > a:hover::after {
+  opacity: 0.9;
+  transform: scale(1.15);
+}
+
+/* =========================================
+   SERVICES CARD LIGHT SWEEP
+   ========================================= */
+
+.services-section .mt-16 > a {
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.72) 35%,
+    rgba(64, 168, 196, 0.08) 50%,
+    rgba(255, 255, 255, 0.95) 65%
+  );
+
+  background-size: 220% 100%;
+  background-position: 100% 0;
+
+  transition:
+    background-position 0.8s ease,
+    transform 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.services-section .mt-16 > a:hover {
+  background-position: 0% 0%;
+}
+
+/* ============================= */
 /* Why Choose Us Reveal */
 /* ============================= */
 
@@ -993,5 +1123,257 @@
 
   .process-hint {
     margin-top: 2rem;
+  }
+}
+
+/* Mobile tech effect only */
+@media (max-width: 1023px) {
+  .mobile-tech-card {
+    animation: bootstackTechPulse 3.5s ease-in-out infinite;
+  }
+
+  .mobile-tech-card:nth-child(1) {
+    animation-delay: 0s;
+  }
+
+  .mobile-tech-card:nth-child(2) {
+    animation-delay: 0.5s;
+  }
+
+  .mobile-tech-card:nth-child(3) {
+    animation-delay: 1s;
+  }
+
+  .mobile-tech-card:nth-child(4) {
+    animation-delay: 1.5s;
+  }
+
+  .mobile-tech-card:nth-child(5) {
+    animation-delay: 2s;
+  }
+
+  @keyframes bootstackTechPulse {
+    0% {
+      box-shadow: 0 0 0 rgba(64, 168, 196, 0);
+    }
+
+    50% {
+      box-shadow:
+        0 0 10px rgba(64, 168, 196, 0.12),
+        inset 0 0 8px rgba(64, 168, 196, 0.04);
+    }
+
+    100% {
+      box-shadow: 0 0 0 rgba(64, 168, 196, 0);
+    }
+  }
+}
+
+/* Mobile service card glow */
+@media (max-width: 1023px) {
+  .mobile-service-card {
+    animation: mobileCardGlow 4s ease-in-out infinite;
+  }
+
+  .mobile-service-card:nth-child(1) {
+    animation-delay: 0s;
+  }
+
+  .mobile-service-card:nth-child(2) {
+    animation-delay: 0.8s;
+  }
+
+  .mobile-service-card:nth-child(3) {
+    animation-delay: 1.6s;
+  }
+
+  .mobile-service-card:nth-child(4) {
+    animation-delay: 2.4s;
+  }
+
+  .mobile-service-card:nth-child(5) {
+    animation-delay: 3.2s;
+  }
+
+  @keyframes mobileCardGlow {
+    0%,
+    70%,
+    100% {
+      box-shadow: 0 0 0 rgba(64, 168, 196, 0);
+    }
+
+    85% {
+      box-shadow:
+        0 0 10px rgba(64, 168, 196, 0.14),
+        0 0 18px rgba(64, 168, 196, 0.06);
+    }
+  }
+}
+
+/* =========================================
+   MOBILE SERVICES CARD ANIMATIONS
+   ========================================= */
+
+@media (max-width: 1023px) {
+  /* -----------------------------------------
+     Scroll entrance
+     ----------------------------------------- */
+
+  .services-scroll-card {
+    opacity: 0;
+    transform: translateX(var(--service-direction));
+  }
+
+  .services-scroll-card.services-cards-visible {
+    animation: serviceCardEnter 0.7s ease-out forwards;
+    animation-delay: var(--service-delay);
+  }
+
+  @keyframes serviceCardEnter {
+    from {
+      opacity: 0;
+      transform: translateX(var(--service-direction));
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* -----------------------------------------
+     Bottom accent line
+     ----------------------------------------- */
+
+  .service-accent-line {
+    position: absolute;
+    left: 32px;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    border-radius: 999px;
+
+    background: linear-gradient(90deg, #40a8c4, #f7aa00);
+
+    transition: width 0.5s ease;
+  }
+
+  .service-mobile-card:active .service-accent-line {
+    width: calc(100% - 64px);
+  }
+
+  /* -----------------------------------------
+     Tap interaction
+     ----------------------------------------- */
+
+  .service-mobile-card:active {
+    transform: translateY(-4px) scale(0.985);
+
+    box-shadow: 0 12px 30px rgba(64, 168, 196, 0.15);
+
+    border-color: #40a8c4;
+  }
+
+  .service-mobile-card:active svg {
+    transform: translateX(2px);
+  }
+
+  .service-mobile-card:active .service-explore-arrow {
+    transform: translateX(6px);
+    color: #f7aa00;
+  }
+}
+/* =========================================
+   MOBILE SERVICES
+   ALTERNATING SLIDE + SOFT BLUR
+   ========================================= */
+
+@media (max-width: 1023px) {
+  .service-scroll-card {
+    opacity: 0;
+    transform: translateX(var(--service-direction));
+    filter: blur(5px);
+  }
+
+  .service-scroll-card.service-card-visible {
+    animation: serviceCardSlideIn 650ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  @keyframes serviceCardSlideIn {
+    from {
+      opacity: 0;
+      transform: translateX(var(--service-direction));
+      filter: blur(5px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+      filter: blur(0);
+    }
+  }
+}
+
+/* =========================================
+   MOBILE SERVICE TAP
+   CYAN GLASS EFFECT
+   ========================================= */
+
+@media (max-width: 1023px) {
+  .service-glass-active {
+    position: relative;
+
+    background: rgba(64, 168, 196, 0.1) !important;
+
+    border-color: rgba(64, 168, 196, 0.75) !important;
+
+    box-shadow:
+      0 10px 25px rgba(35, 87, 132, 0.12),
+      0 0 20px rgba(64, 168, 196, 0.2),
+      inset 0 0 20px rgba(64, 168, 196, 0.08) !important;
+
+    transform: translateY(-3px) scale(0.99);
+
+    transition:
+      background 0.25s ease,
+      border-color 0.25s ease,
+      box-shadow 0.25s ease,
+      transform 0.25s ease;
+  }
+
+  /* Cyan light moving across the card */
+
+  .service-glass-active::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    border-radius: inherit;
+
+    background: linear-gradient(
+      110deg,
+      transparent 25%,
+      rgba(64, 168, 196, 0.04) 40%,
+      rgba(64, 168, 196, 0.18) 50%,
+      rgba(64, 168, 196, 0.04) 60%,
+      transparent 75%
+    );
+
+    background-size: 220% 100%;
+
+    animation: cyanGlassSweep 450ms ease-out forwards;
+
+    pointer-events: none;
+  }
+
+  @keyframes cyanGlassSweep {
+    from {
+      background-position: 120% 0;
+    }
+
+    to {
+      background-position: -20% 0;
+    }
   }
 }

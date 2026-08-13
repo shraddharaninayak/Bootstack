@@ -72,31 +72,60 @@ export default function ServiceOrb({ Icon }) {
 </motion.div>
 
       {/* Center Orb */}
-      <motion.div
-        animate={{
-          y: [0, -8, 0],
-          scale: [1, 1.03, 1],
-        }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="relative flex h-36 w-36 items-center justify-center rounded-full border border-white/70 bg-white/80 shadow-2xl backdrop-blur-xl"
-      >
-        <motion.div
-          animate={{
-            rotate: [0, 6, -6, 0],
-          }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
-          <Icon className="h-14 w-14 text-[#235784]" />
-        </motion.div>
-      </motion.div>
+<motion.div
+  animate={{
+    y: [0, -8, 0],
+    scale: [1, 1.03, 1],
+  }}
+  transition={{
+    duration: 4,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+  className="
+    relative
+    flex
+    h-36
+    w-36
+    items-center
+    justify-center
+    overflow-hidden
+    rounded-full
+    border
+    border-white/70
+    bg-white/80
+    shadow-2xl
+    backdrop-blur-xl
+  "
+>
+  {/* Soft Cyan Center Glow */}
+  <div
+    aria-hidden="true"
+    className="
+      pointer-events-none
+      absolute
+      inset-5
+      rounded-full
+      bg-[#40A8C4]/25
+      blur-2xl
+    "
+  />
+
+  {/* Icon */}
+  <motion.div
+    animate={{
+      rotate: [0, 6, -6, 0],
+    }}
+    transition={{
+      duration: 5,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+    className="relative z-10"
+  >
+    <Icon className="h-14 w-14 text-[#235784]" />
+  </motion.div>
+</motion.div>
 
     </div>
   );
